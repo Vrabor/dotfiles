@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=16:antialias=true:autohint=true";
+static char *font = "Liberation Mono:pixelsize=14:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -30,9 +30,9 @@ static float chscale = 1.0;
 /*
  * word delimiter string
  *
- * More advanced example: " `'\"()[]{}"
+ * More advanced example: L" `'\"()[]{}"
  */
-char *worddelimiters = " ";
+wchar_t *worddelimiters = L" ";
 
 /* selection timeouts (in milliseconds) */
 static unsigned int doubleclicktimeout = 300;
@@ -84,24 +84,23 @@ unsigned int tabspaces = 4;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"#000000",
+	"#333333",
 	"#cc0000",
 	"#5ceb46",
 	"#ebd546",
-	"#176aef",
-	"#d546eb",
-	"#46ebd5",
+	"#1d99f3",
+	"#a937ba",
+	"#1abc9c",
 	"#e2e2e2",
 
 	/* 8 bright colors */
 	"#3f3f3f",
-	"#ff0000",
+	"#ee0000",
 	"#a0f393",
 	"#f3e693",
 	"#4db8ff",
 	"#e693f3",
-	"#93f3e6",
+	"#46ebd5",
 	"#ffffff",
 
 	[255] = 0,
@@ -117,7 +116,7 @@ static const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 7;
-unsigned int defaultbg = 8;
+unsigned int defaultbg = 0;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
