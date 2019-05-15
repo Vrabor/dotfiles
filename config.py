@@ -40,8 +40,9 @@ keys = [
 
     #User defined
     Key([mod], "1", lazy.spawn("firefox")),
+    Key([mod], "2", lazy.spawn("chromium")),
     Key([mod], "e", lazy.spawn("rofi -show run")),
-    
+    Key([mod], "r", lazy.spawn("termite -e ranger")), 
 
     #Layout specific
     #Monad
@@ -84,24 +85,29 @@ widget_defaults = dict(
     font='sans',
     fontsize=12,
     padding=3,
+    foreground = "f0f0f0"
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [Screen(top = bar.Bar([
         # This is a list of our virtual desktops.
         widget.GroupBox(urgent_alert_method='text',
-                        fontsize=10, 
-                        borderwidth=1),
+                        fontsize=11, 
+                        borderwidth=2,
+                        active = "f0f0f0",
+                        inactive = "aaaaaa"),
         # Current window name.
-        widget.WindowName(foreground = "a0a0a0",),
+        widget.WindowName(),
         #widget.Wallpaper(),
         widget.Notify(),
-        #widget.Wlan(), breaks config :( fix later
+        widget.Battery(format='{char} {percent:2.1%}', foreground="336cff"),
+        widget.Memory(),
+        #widget.Wlan(interface = wlp1s0), #breaks config :( fix later
         widget.Volume(foreground = "70ff70"),
-        widget.Clock(foreground = "a0a0a0",
+        widget.Clock(
                     fmt = '%Y-%m-%d %a %I:%M %p'),
-        #widget.CurrentLayoutIcon(),
-    ], 22)) # our bar is (xx)px high
+        widget.CurrentLayoutIcon(),
+    ], 24, background = "333333")) # our bar is (xx)px high
 ]
 
 
