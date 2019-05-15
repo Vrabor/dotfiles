@@ -13,6 +13,7 @@ if dein#load_state('~/.local/share/dein')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
+  call dein#add('dart-lang/dart-vim-plugin')
 
   call dein#end()
   call dein#save_state()
@@ -27,3 +28,7 @@ let g:deoplete#enable_at_startup = 1
 
 filetype plugin indent on
 syntax enable
+
+:set tabstop=4
+:set shiftwidth=4
+:set expandtab
