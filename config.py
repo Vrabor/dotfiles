@@ -28,7 +28,7 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     #Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
-    Key([mod], "Return", lazy.spawn("termite")),
+    Key([mod], "Return", lazy.spawn("st")),
 
     # Toggle between different layouts as defined below
     Key([mod], "space", lazy.next_layout()),
@@ -41,8 +41,8 @@ keys = [
     #User defined
     Key([mod], "1", lazy.spawn("firefox")),
     Key([mod], "2", lazy.spawn("chromium")),
-    Key([mod], "e", lazy.spawn("rofi -show run")),
-    Key([mod], "r", lazy.spawn("termite -e ranger")), 
+    Key([mod], "e", lazy.spawn("st -e ranger")), 
+    Key([mod], "r", lazy.spawn("rofi -show run")), 
 
     #Layout specific
     #Monad
@@ -100,10 +100,10 @@ screens = [Screen(top = bar.Bar([
         widget.WindowName(),
         #widget.Wallpaper(),
         widget.Notify(),
-        widget.Battery(format='{char} {percent:2.1%}', foreground="336cff"),
+        widget.Battery(format='{char} {percent:2.1%}', foreground="2ECCFA"),
         widget.Memory(),
         #widget.Wlan(interface = wlp1s0), #breaks config :( fix later
-        widget.Volume(foreground = "70ff70"),
+        widget.Volume(foreground = "ff7070"),
         widget.Clock(
                     fmt = '%Y-%m-%d %a %I:%M %p'),
         widget.CurrentLayoutIcon(),
