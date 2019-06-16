@@ -17,6 +17,7 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('joshdick/onedark.vim')
   call dein#add('crusoexia/vim-monokai')
   call dein#add('mhartington/oceanic-next')
+  call dein#add('rust-lang/rust.vim')
 
   call dein#end()
   call dein#save_state()
@@ -36,6 +37,8 @@ endif
 filetype plugin indent on
 syntax enable
 colorscheme OceanicNext
+
+autocmd Filetype rust colorscheme onedark
 
 :set tabstop=4
 :set shiftwidth=4
