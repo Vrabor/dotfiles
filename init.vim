@@ -13,7 +13,10 @@ if dein#load_state('~/.local/share/dein')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  call dein#add('dart-lang/dart-vim-plugin')
+  call dein#add('arcticicestudio/nord-vim')
+  call dein#add('joshdick/onedark.vim')
+  call dein#add('crusoexia/vim-monokai')
+  call dein#add('mhartington/oceanic-next')
 
   call dein#end()
   call dein#save_state()
@@ -26,8 +29,13 @@ if !has('nvim')
 endif
 let g:deoplete#enable_at_startup = 1
 
+if (has("termguicolors"))
+    set termguicolors
+endif
+
 filetype plugin indent on
 syntax enable
+colorscheme OceanicNext
 
 :set tabstop=4
 :set shiftwidth=4
