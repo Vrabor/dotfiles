@@ -2,8 +2,7 @@
 
 set -e
 
-sudo pacman -S pcmanfm-qt --noconfirm --needed
-sudo pacman -S rxvt-unicode --noconfirm --needed
+sudo pacman -S termite --noconfirm --needed
 sudo pacman -S firefox --noconfirm --needed
 sudo pacman -S clang --noconfirm --needed
 sudo pacman -S git --noconfirm --needed
@@ -24,7 +23,6 @@ sudo pacman -S gparted --noconfirm --needed
 sudo pacman -S htop --noconfirm --needed
 sudo pacman -S hardinfo --noconfirm --needed
 sudo pacman -S lm_sensors --noconfirm --needed
-sudo pacman -S urxvt-perls --noconfirm --needed
 sudo pacman -S --noconfirm --needed unace unrar unzip
 
 
