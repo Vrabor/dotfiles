@@ -1,0 +1,58 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+# Note about the powerline stuff
+# To put a divider with the powerline arrow in a module you add
+# use <span background='COLOR OF MODULES BG' foreground='COLOR OF BARS BG'></span>
+# and use the same code at the end of a format, where background
+# is the color of the bars bg, and foreground is your modules bg
+# it might not be the best approach, but how I tinkered my way to it
+
+
+general {
+        output_format = "i3bar"
+        colors = false
+        markup = pango
+        interval = 5
+        color_good = '#000000'
+        color_degraded = '#000000'
+        color_bad = '#000000'
+}
+
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
+order += "memory"
+order += "tztime local"
+
+wireless _first_ {
+        format_up = "<span background='#198844' foreground='#333333'>   </span><span background='#198844'> (%quality at %essid) %ip </span><span background='#333333' foreground='#198844'></span>"
+        format_down = " 睊"
+}
+
+ethernet _first_ {
+        format_up = "<span background='#cc342b'> 🔌 %ip (%speed) </span>"
+        format_down = "<span background='#cc342b' foreground='#333333'></span><span background='#cc342b'>  🔌  </span><span background='#333333' foreground='#cc342b'></span>"
+}
+
+battery all {
+        format = "<span background='#fba922' foreground='#333333'></span><span background='#fba922'>   %percentage  </span><span background='#333333' foreground='#fba922'></span>"
+}
+
+
+memory {
+        format = "<span background='#3971ed' foreground='#333333'></span><span background='#3971ed'> Mem: %used // %available  </span><span background='#333333' foreground='#3971ed'></span>"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "<span background='#858886' foreground='#333333'></span><span background='#858886'>  %time  </span>"
+        format_time = "%Y-%m-%d %I:%M"
+}
+
