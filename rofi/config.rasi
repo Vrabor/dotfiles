@@ -1,0 +1,9 @@
+configuration {
+	modi: "window,run,drun,ssh";
+	font: "Hack 12";
+	show-icons: false;
+    //icon-theme: "Papirus";
+    theme: "pop-dark";
+    fake-transparency: true;   
+}
+
