@@ -1,0 +1,200 @@
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+label = %percentage:2%%
+
+[module/memory]
+;https://github.com/jaagr/polybar/wiki/Module:-memory
+type = internal/memory
+interval = 1
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+label = %percentage_used%%
+bar-used-indicator =
+bar-used-width = 10
+bar-used-foreground-0 = #3384d0
+bar-used-fill = 
+bar-used-empty = 
+bar-used-empty-foreground = #ffffff
+
+format = <label> <bar-used>
+format-prefix = "  "
+format-prefix-foreground = #3384d0
+format-underline = #4B5665
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/networkspeedup]
+;https://github.com/jaagr/polybar/wiki/Module:-network
+type = internal/network
+interface = wlp1s0
+;interface = enp14s0
+;interface = enp0s31f6
+;interface = eno1
+label-connected = " %upspeed:7%"
+label-connected-background = ${colors.background}
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground}
+format-connected-foreground = ${colors.foreground}
+format-connected-background = ${colors.background}
+
+################################################################################
+
+[module/networkspeeddown]
+;https://github.com/jaagr/polybar/wiki/Module:-network
+type = internal/network
+interface = wlp1s0
+;interface = enp14s0
+;interface = enp0s31f6
+;interface = eno1
+label-connected = " %downspeed:7%"
+label-connected-background = ${colors.background}
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground}
+format-connected-foreground = ${colors.foreground}
+format-connected-background = ${colors.background}
+
+[module/volume]
+;https://github.com/jaagr/polybar/wiki/Module:-volume
+type = internal/volume
+format-volume = "<label-volume>  <bar-volume>"
+
+label-volume = " "
+label-volume-foreground = #40ad4b
+label-muted = muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #40ad4b
+bar-volume-foreground-1 = #40ad4b
+bar-volume-foreground-2 = #40ad4b
+bar-volume-foreground-3 = #40ad4b
+bar-volume-foreground-4 = #40ad4b
+bar-volume-foreground-5 = #40ad4b
+bar-volume-foreground-6 = #40ad4b
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 2
+bar-volume-fill = 
+bar-volume-fill-font = 2
+bar-volume-empty = 
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground}
+format-volume-foreground = ${colors.foreground}
+format-volume-background = ${colors.background}
+format-muted-prefix = "  "
+format-muted-prefix-foreground = "#ff0000"
+format-muted-foreground = ${colors.foreground}
+format-muted-background = ${colors.background}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
